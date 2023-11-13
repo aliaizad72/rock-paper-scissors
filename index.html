@@ -8,9 +8,15 @@
 <body>
     <script>
         function getComputerChoice () {
-            const rps = ["Rock", "Paper", "Scissors"];  //INITIATE a list of rock, paper, scissors
+            const rps = ["rock", "paper", "scissors"];  //INITIATE a list of rock, paper, scissors
             const pick = Math.floor(Math.random()*rps.length); //  PASS the random function to match the index of that list
             return rps[pick]; //  RETURN the list item
+        }
+        
+        //Write a function that plays a game of rock, paper, scissors
+        function playerChoice () {
+            const choice = prompt("Rock, paper or scissors?").toLowerCase(); // MAKE variable out of the input from player
+            return choice
         }
 
     </script>
