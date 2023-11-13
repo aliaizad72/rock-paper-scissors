@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock-Paper-Scissors</title>
+</head>
+<body>
+    <script>
+        function getComputerChoice () {
+            const rps = ["Rock", "Paper", "Scissors"];  //INITIATE a list of rock, paper, scissors
+            const pick = Math.floor(Math.random()*rps.length); //  PASS the random function to match the index of that list
+            return rps[pick]; //  RETURN the list item
+        }
+
+    </script>
+</body>
+</html>
