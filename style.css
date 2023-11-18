@@ -1,0 +1,14 @@
+body {
+    font-family: 'Kdam Thmor Pro', sans-serif;
+    background-color: #233d4d;
+    color: #fe7f2d;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#start-prompt {
+    font-size: 125px;
+}
