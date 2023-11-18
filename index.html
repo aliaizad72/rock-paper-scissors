@@ -4,53 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock-Paper-Scissors</title>
+    <script src="script.js"></script>
 </head>
 <body>
-    <script>
-        function getComputerChoice () {
-            const rps = ["rock", "paper", "scissors"];  //INITIATE a list of rock, paper, scissors
-            const pick = Math.floor(Math.random()*rps.length); //  PASS the random function to match the index of that list
-            return rps[pick]; //  RETURN the list item
-        }
-        
-        //Write a function that plays a game of rock, paper, scissors
-        function getPlayerChoice () {
-            const choice = prompt("Rock, paper or scissors?").toLowerCase(); // MAKE variable out of the input from player
-            return choice
-        }
-
-        //A function to evaluate the winner
-        function evalWinner (client, computer) {
-            if (client === computer) {
-                alert(`Draw. Computer also chooses ${client}.`)
-            } else {
-                if ((client === 'rock' && computer === 'paper') ||
-                    (client === 'paper' && computer === 'scissors') ||
-                    (client === 'scissors' && computer === 'rock')) {
-                        alert(`You lose because ${computer} beats ${client}`);
-                    }
-                else if ((client === 'rock' && computer === 'scissors') ||
-                         (client === 'paper' && computer === 'rock') ||
-                         (client === 'scissors' && computer === 'paper')) {
-                            alert(`You won because ${client} beats ${computer}`)
-                         }
-                else {
-                    alert("Please check your spelling. Especially the spelling of scissors");
-                }
-            }
-        }
-
-        function playRound () {
-            const playerSelection = getPlayerChoice();
-            const computerSelection = getComputerChoice();
-            evalWinner(playerSelection, computerSelection);
-        }
-
-        function game() {
-            for (let i = 0; i < 5; i++) {
-                playRound();
-            }
-        }
-    </script>
 </body>
 </html>
