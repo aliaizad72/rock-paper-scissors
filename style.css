@@ -10,5 +10,17 @@ body {
 }
 
 #start-prompt {
+    font-family: 'Kdam Thmor Pro', sans-serif;
+    background-color: #233d4d;
+    color: #fe7f2d;
     font-size: 125px;
+    border-radius: 15px;
+    border: 2px solid #fe7f2d;
+    padding: 0 30px;
+    cursor: pointer;
+}
+
+#start-prompt:hover{
+    color: #233d4d;
+    background-color: #fe7f2d;
 }
