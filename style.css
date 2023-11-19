@@ -4,12 +4,15 @@ body {
     color: #fe7f2d;
     height: 100vh;
     margin: 0;
+}
+
+#button-container {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#start-prompt {
+#game-button {
     font-family: 'Kdam Thmor Pro', sans-serif;
     background-color: #233d4d;
     color: #fe7f2d;
@@ -20,7 +23,7 @@ body {
     cursor: pointer;
 }
 
-#start-prompt:hover{
+#game-button:hover{
     color: #233d4d;
     background-color: #fe7f2d;
 }
