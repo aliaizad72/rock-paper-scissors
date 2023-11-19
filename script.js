@@ -12,14 +12,22 @@ function deleteNode() {
     gameButton.remove();
 }
 
-function createDivs() {
+function createSelections() {
     const buttonDiv = document.querySelector('#button-container');
     const rock = document.createElement('button');
+    const paper = document.createElement('button');
+    const scissors = document.createElement('button');
+    rock.textContent = 'ROCK';
+    paper.textContent = 'PAPER';
+    scissors.textContent = 'SCISSORS';
+
     buttonDiv.appendChild(rock);
+    buttonDiv.appendChild(paper);
+    buttonDiv.appendChild(scissors);
 }
 
 
 function startGame() {
     deleteNode();
-    createDivs();
+    createSelections();
 }
