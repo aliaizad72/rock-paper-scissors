@@ -1,15 +1,30 @@
 const gameButton = document.querySelector('#game-button');
+let round = 1;
+let userWin = 0;
+let computerWin = 0;
 
 gameButton.addEventListener('click', startGame);
 
-function deleteNode(event) {
-    event.target.remove();
+function startGame(event) {
+    initiatePage(event)
+    addButtonListeners();
 }
 
-function getComputerChoice () {
-    const rps = ["rock", "paper", "scissors"];  
-    const pick = Math.floor(Math.random()*rps.length); 
-    return rps[pick]; 
+function initiatePage(event) {
+    deleteNode(event);
+    createButtons();
+}
+
+function addButtonListeners() {
+    const selections = document.querySelectorAll('.selection');
+    selections.forEach((selection) => {
+        selection.addEventListener('click', playGame);
+    })
+    document.querySelector('#restart-button').addEventListener('click',() => location.reload());
+}
+
+function deleteNode(event) {
+    event.target.remove();
 }
 
 function createButtons() {
@@ -36,16 +51,20 @@ function createButtons() {
     restartDiv.appendChild(restart);
 }
 
+function playGame(event) {
+    if (userWin < 2 && computerWin < 2) {
+        let playerChoice = event.target.textContent.toLowerCase();
+        let computerChoice = getComputerChoice();
+        evalWinner(playerChoice, computerChoice);
+    } else {
+        console.log('Press restart!')
+    }
+}
 
-function startGame(event) {
-    deleteNode(event);
-    createButtons();
-    document.querySelector('#restart-button').addEventListener('click',() => location.reload());
-
-    const selections = document.querySelectorAll('.selection');
-    selections.forEach((selection) => {
-        selection.addEventListener('click', playOneGame);
-    })
+function getComputerChoice () {
+    const rps = ["rock", "paper", "scissors"];  
+    const pick = Math.floor(Math.random()*rps.length); 
+    return rps[pick]; 
 }
 
 function evalWinner (client, computer) {
@@ -55,18 +74,17 @@ function evalWinner (client, computer) {
         if ((client === 'rock' && computer === 'paper') ||
             (client === 'paper' && computer === 'scissors') ||
             (client === 'scissors' && computer === 'rock')) {
+                computerWin += 1
                 console.log(`You lose because ${computer} beats ${client}`);
             }
         else if ((client === 'rock' && computer === 'scissors') ||
                  (client === 'paper' && computer === 'rock') ||
                  (client === 'scissors' && computer === 'paper')) {
+                    userWin += 1
                     console.log(`You won because ${client} beats ${computer}`)
                  }
     }
 }
 
-function playOneGame(event) {
-    let playerChoice = event.target.textContent.toLowerCase();
-    let computerChoice = getComputerChoice();
-    evalWinner(playerChoice, computerChoice);
-}
+
+
