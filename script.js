@@ -8,6 +8,7 @@ gameButton.addEventListener('click', startGame);
 function startGame(event) {
     initiatePage(event)
     addButtonListeners();
+    createScoreboard();
 }
 
 function initiatePage(event) {
@@ -51,6 +52,10 @@ function createButtons() {
     restartDiv.appendChild(restart);
 }
 
+function createScoreboard() {
+    const scoreboard = document.querySelector('#scoreboard');
+    scoreboard.textContent = `${userWin}  -  ${computerWin}`;
+}
 function playGame(event) {
     if (userWin < 2 && computerWin < 2) {
         let playerChoice = event.target.textContent.toLowerCase();
