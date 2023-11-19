@@ -3,26 +3,14 @@ let round = 1;
 let userWin = 0;
 let computerWin = 0;
 
-gameButton.addEventListener('click', startGame);
-
-function startGame(event) {
-    initiatePage(event)
-    addButtonListeners();
-    createScoreboard();
-    createResults();
-}
+gameButton.addEventListener('click', initiatePage);
 
 function initiatePage(event) {
     deleteNode(event);
     createButtons();
-}
-
-function addButtonListeners() {
-    const selections = document.querySelectorAll('.selection');
-    selections.forEach((selection) => {
-        selection.addEventListener('click', playGame);
-    })
-    document.querySelector('#restart-button').addEventListener('click',() => location.reload());
+    updateScoreboard();
+    createResults();
+    addButtonListeners();
 }
 
 function deleteNode(event) {
@@ -53,7 +41,7 @@ function createButtons() {
     restartDiv.appendChild(restart);
 }
 
-function createScoreboard() {
+function updateScoreboard() {
     const scoreboard = document.querySelector('#scoreboard');
     scoreboard.textContent = `${userWin}  -  ${computerWin}`;
 }
@@ -63,13 +51,31 @@ function createResults() {
     results.textContent = `Rock, paper or scissors?`;
 }
 
+function addButtonListeners() {
+    const selections = document.querySelectorAll('.selection');
+    selections.forEach((selection) => {
+        selection.addEventListener('click', playGame);
+    })
+    document.querySelector('#restart-button').addEventListener('click',() => location.reload());
+}
+
 function playGame(event) {
     if (userWin < 2 && computerWin < 2) {
         let playerChoice = event.target.textContent.toLowerCase();
         let computerChoice = getComputerChoice();
-        evalWinner(playerChoice, computerChoice);
+        let result = evalWinner(playerChoice, computerChoice);
+        updateScoreboard();
+        if (userWin === 2) {
+            result = result + ` You won the game!`;
+        } else if (computerWin === 2) {
+            result = result + ` You lost the game!`;
+        } else {
+            result = result
+        }
+        updateResults(result);
     } else {
-        console.log('Press restart!')
+        result = `Game over. Press restart to play again!`;
+        updateResults(result);
     }
 }
 
@@ -81,22 +87,24 @@ function getComputerChoice () {
 
 function evalWinner (client, computer) {
     if (client === computer) {
-        console.log(`Draw. Computer also chooses ${client}.`)
+        return `Draw. Computer also chooses ${client}.`;
     } else {
         if ((client === 'rock' && computer === 'paper') ||
             (client === 'paper' && computer === 'scissors') ||
             (client === 'scissors' && computer === 'rock')) {
                 computerWin += 1
-                console.log(`You lose because ${computer} beats ${client}`);
+                return `You lose because ${computer} beats ${client}.`;
             }
         else if ((client === 'rock' && computer === 'scissors') ||
                  (client === 'paper' && computer === 'rock') ||
                  (client === 'scissors' && computer === 'paper')) {
                     userWin += 1
-                    console.log(`You won because ${client} beats ${computer}`)
+                    return `You won because ${client} beats ${computer}.`;
                  }
     }
 }
 
-
-
+function updateResults(text) {
+    const results = document.querySelector('#results')
+    results.textContent = text;
+}
