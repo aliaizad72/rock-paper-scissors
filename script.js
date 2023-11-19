@@ -36,7 +36,8 @@ function createButtons() {
     restartDiv.appendChild(restart);
 }
 
-
+function createScoreboard () {
+}
 
 
 function startGame() {
