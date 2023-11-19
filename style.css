@@ -7,7 +7,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 100px;
+    justify-content: center;
+    gap: 50px;
 }
 
 #button-container {
@@ -47,4 +48,8 @@ button:hover{
 
 #scoreboard {
     font-size: 100px;
+}
+
+#results {
+    font-size: 63px;
 }

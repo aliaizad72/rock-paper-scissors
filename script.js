@@ -9,6 +9,7 @@ function startGame(event) {
     initiatePage(event)
     addButtonListeners();
     createScoreboard();
+    createResults();
 }
 
 function initiatePage(event) {
@@ -56,6 +57,12 @@ function createScoreboard() {
     const scoreboard = document.querySelector('#scoreboard');
     scoreboard.textContent = `${userWin}  -  ${computerWin}`;
 }
+
+function createResults() {
+    const results = document.querySelector('#results')
+    results.textContent = `Rock, paper or scissors?`;
+}
+
 function playGame(event) {
     if (userWin < 2 && computerWin < 2) {
         let playerChoice = event.target.textContent.toLowerCase();
