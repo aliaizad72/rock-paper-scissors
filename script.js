@@ -60,14 +60,14 @@ function addButtonListeners() {
 }
 
 function playGame(event) {
-    if (userWin < 2 && computerWin < 2) {
+    if (userWin < 5 && computerWin < 5) {
         let playerChoice = event.target.textContent.toLowerCase();
         let computerChoice = getComputerChoice();
         let result = evalWinner(playerChoice, computerChoice);
         updateScoreboard();
-        if (userWin === 2) {
+        if (userWin === 5) {
             result = result + ` You won the game!`;
-        } else if (computerWin === 2) {
+        } else if (computerWin === 5) {
             result = result + ` You lost the game!`;
         } else {
             result = result
@@ -93,14 +93,14 @@ function evalWinner (client, computer) {
             (client === 'paper' && computer === 'scissors') ||
             (client === 'scissors' && computer === 'rock')) {
                 computerWin += 1
-                return `You lose because ${computer} beats ${client}.`;
+                return `You chose ${client}, computer chose ${computer}.`
             }
         else if ((client === 'rock' && computer === 'scissors') ||
                  (client === 'paper' && computer === 'rock') ||
                  (client === 'scissors' && computer === 'paper')) {
                     userWin += 1
-                    return `You won because ${client} beats ${computer}.`;
-                 }
+                    return `You chose ${client}, computer chose ${computer}.`
+                }
     }
 }
 
